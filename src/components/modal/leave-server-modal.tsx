@@ -28,7 +28,7 @@ const LeaveServerModal = () => {
       await axios.patch(`/server/leave/${server?.id}`);
       queryClient.invalidateQueries({ queryKey: ['servers'] });
       queryClient.invalidateQueries({ queryKey: ['members'] });
-      navigate('/');
+      navigate('/devflow/questions');
     } catch (error) {
       console.log(error);
     } finally {

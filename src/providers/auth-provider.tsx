@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     sessionId: string
   ) => {
     try {
-      const response = await axios.post('/user/sign-in', {
+      const response = await axios.post('/user/sign-up', {
         name,
         password,
         sessionId,

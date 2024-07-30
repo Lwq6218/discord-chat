@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,6 +38,7 @@ export default function Profile({ user }: Props) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const queryClient = useQueryClient();
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
@@ -69,6 +71,7 @@ export default function Profile({ user }: Props) {
           ...values,
         });
       }
+      queryClient.invalidateQueries({ queryKey: ['user', user.id] });
 
       navigate(`/devflow/profile/${user.id}`);
     } catch (error) {

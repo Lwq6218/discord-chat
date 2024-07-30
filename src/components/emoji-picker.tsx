@@ -5,13 +5,16 @@ import {
 } from '@/components/ui/popover';
 import { useTheme } from '@/providers/theme-provider';
 import data from '@emoji-mart/data';
+import zh from '@emoji-mart/data/i18n/zh.json';
 import Picker from '@emoji-mart/react';
 import { Smile } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface EmojiPickerProps {
   onChange: (value: string) => void;
 }
 export const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
+  const { i18n } = useTranslation();
   const { theme } = useTheme();
   return (
     <Popover>
@@ -24,6 +27,7 @@ export const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
         className="mb-16 border-none bg-transparent shadow-none drop-shadow-none"
       >
         <Picker
+          i18n={i18n.language === 'zh' && zh}
           theme={theme}
           data={data}
           onEmojiSelect={(emoji: any) => onChange(emoji.native)}

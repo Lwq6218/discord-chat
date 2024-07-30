@@ -15,7 +15,6 @@ createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <SocketProvider>
         <QueryProvider>
-          <ReactQueryDevtools initialIsOpen={false} />
           <AppRouter />
         </QueryProvider>
       </SocketProvider>

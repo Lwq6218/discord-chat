@@ -25,7 +25,8 @@ export default function AllAnswers({ questionId, totalAnswers }: Props) {
   });
 
   const { data: page } = answersQUery;
-  const answers = page?.list;
+  const answers = page;
+  console.log('answers', answers);
   if (!answers) return;
   return (
     <div className="mt-11">
@@ -80,7 +81,7 @@ export default function AllAnswers({ questionId, totalAnswers }: Props) {
         ))}
       </div>
 
-      <div className="mt-10">
+      {/* <div className="mt-10">
         {page && (
           <Pagination
             pageNum={+page.pageNum}
@@ -88,7 +89,7 @@ export default function AllAnswers({ questionId, totalAnswers }: Props) {
             total={+page.total}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Page, Profile } from '@/types';
-import qs from 'query-string';
 import axios from 'axios';
+import qs from 'query-string';
 
 export async function listUsers({
   filter,
@@ -15,6 +15,7 @@ export async function listUsers({
     filter: filter ? filter : 'recommended',
     pageNum: pageNum ? parseInt(pageNum as string) : 1,
     q: q ? q : null,
+    // pageSize: parseInt('4'),
   };
   const url = qs.stringifyUrl({
     url: '/user/list',

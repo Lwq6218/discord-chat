@@ -2,7 +2,7 @@ import { Answer, Page } from '@/types';
 import axios from 'axios';
 import qs from 'query-string';
 
-export async function listAnswers(questionId: string): Promise<Page<Answer>> {
+export async function listAnswers(questionId: string): Promise<Answer[]> {
   try {
     const url = qs.stringifyUrl({
       url: `/answer/list/question`,
